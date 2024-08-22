@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import TotalSalesChart from './components/TotalSalesChart';
 
-function App() {
+const App = () => {
+  const [interval, setInterval] = useState('monthly');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Sales Dashboard</h1>
+      <div>
+        <button onClick={() => setInterval('daily')}>Daily</button>
+        <button onClick={() => setInterval('monthly')}>Monthly</button>
+        <button onClick={() => setInterval('quarterly')}>Quarterly</button>
+        <button onClick={() => setInterval('yearly')}>Yearly</button>
+      </div>
+      <TotalSalesChart interval={interval} />
     </div>
   );
-}
+};
 
 export default App;
